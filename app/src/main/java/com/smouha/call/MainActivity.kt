@@ -203,8 +203,7 @@ class MainActivity : AppCompatActivity() {
             binding.pairWindowBadge.visibility = View.VISIBLE
             binding.pairWindowBadge.text = "⚡ READY · ${remSec}s"
             binding.pairHint.text =
-                "⚡ Ready to Pair! Phone IP: $ip (Quick Code: $qc)
-Click «⚡ Auto-Pair Phone» on PC (or type $qc in the PC IP box for instant 0.1s link)!"
+                "⚡ Ready to Pair! Phone IP: $ip (Quick Code: $qc)\nClick «⚡ Auto-Pair Phone» on PC (or type $qc in the PC IP box for instant 0.1s link)!"
         } else {
             binding.pairWindowBadge.visibility = View.GONE
             val paired = prefs.hasPairedSession()
@@ -346,8 +345,7 @@ Click «⚡ Auto-Pair Phone» on PC (or type $qc in the PC IP box for instant 0.
             }
             val st = if (last.ok) "OK" else "FAIL"
             binding.lastActionText.text =
-                "$kind · ${last.phone} · $st (${fmt.format(Date(last.ts))})
-${last.detail}"
+                "$kind · ${last.phone} · $st (${fmt.format(Date(last.ts))})\n${last.detail}"
             binding.lastActionText.setTextColor(
                 ContextCompat.getColor(this, if (last.ok) R.color.success else R.color.danger)
             )
@@ -533,10 +531,6 @@ ${last.detail}"
         val ip = NetworkUtils.localIpv4() ?: "—"
         val qc = NetworkUtils.quickCode(ip) ?: "—"
         binding.settingsMeta.text =
-            "Version: 1.5.3 (Executive Edition)
-Device ID: ${prefs.deviceId}
-IP: $ip (Quick Code: $qc)
-Port: ${Prefs.PORT}
-Paired PCs: ${prefs.sessionTokens().size}"
+            "Version: 1.5.3 (Executive Edition)\nDevice ID: ${prefs.deviceId}\nIP: $ip (Quick Code: $qc)\nPort: ${Prefs.PORT}\nPaired PCs: ${prefs.sessionTokens().size}"
     }
 }
